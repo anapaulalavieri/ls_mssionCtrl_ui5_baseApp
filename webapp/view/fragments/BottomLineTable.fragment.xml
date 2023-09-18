@@ -1,0 +1,159 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+    <Table busy="{localModel>/bExplineBusy}" showNoData="false" showSeparators="None" class="lineTable lineLabelTable" items="{path:'localModel>/lineItems',templateShareable:true}">
+        <columns>
+			<Column hAlign="Center"> <Text text=" " class="tileSubTitle"/> </Column>
+		</columns>
+		<items>
+			<ColumnListItem press="onMachineItemClick" type="Active">
+                <!-- <customData>
+                        <core:CustomData key="background" value="{= ${localModel>/machineClicked} === ${localModel>RESDESCR} ? 'rowHighlight' : '' }" writeToDom="true"/>
+                </customData> -->
+				<cells>
+                    <HBox justifyContent="Center">
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle"></Text>
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle">
+                       <customData>
+                                <core:CustomData key="colour" value="{= ${localModel>/machineClicked} === ${localModel>RESDESCR} ? 'listSelectItem':''}" writeToDom="true" />
+                        </customData>
+                        </Text>  
+                    </HBox>
+                </cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    <!-- Utilization -->
+    <Table busy="{localModel>/bExplineBusy}" showNoData="false" showSeparators="None" class="lineTable lineTableContainer" items="{path:'localModel>/lineItems',templateShareable:true}">
+		<infoToolbar>
+			<OverflowToolbar class="lineTableInfoToolbar">
+				<Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Utilization' :'Line Utilization'  }" class="tileSubContentHeading"></Text>
+			</OverflowToolbar>
+		</infoToolbar>
+        <columns>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='DTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='DTD'? 'Bold': 'Standard' }" text="DTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='3DAY'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='3DAY'? 'Bold': 'Standard' }" text="3DAY" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='WTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='WTD'? 'Bold': 'Standard' }" text="WTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='MTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='MTD'? 'Bold': 'Standard' }" text="MTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='YTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='YTD'? 'Bold': 'Standard' }" text="YTD" class="tileSubTitle"/> </Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+            <customData>
+                        <core:CustomData key="background" value="{= ${localModel>/machineClicked} === ${localModel>RESDESCR} ? 'rowHighlight' : '' }" writeToDom="true"/>
+                </customData>
+				<cells>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEUTILIZATIONRATEDTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEUTILIZATIONRATEDTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPUTILIZATIONRATEDTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPUTILIZATIONRATEDTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEUTILIZATIONRATE3DAY',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEUTILIZATIONRATE3DAY',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPUTILIZATIONRATE3DAY',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPUTILIZATIONRATE3DAY',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEUTILIZATIONRATEWTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEUTILIZATIONRATEWTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPUTILIZATIONRATEWTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPUTILIZATIONRATEWTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEUTILIZATIONRATEMTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEUTILIZATIONRATEMTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPUTILIZATIONRATEMTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPUTILIZATIONRATEMTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEUTILIZATIONRATEYTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEUTILIZATIONRATEYTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPUTILIZATIONRATEYTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPUTILIZATIONRATEYTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                </cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+     <!-- Availability -->
+    <Table busy="{localModel>/bExplineBusy}" showNoData="false" showSeparators="None" class="lineTable lineTableContainer sapUiTinyMarginEnd" items="{path:'localModel>/lineItems',templateShareable:true}">
+        <infoToolbar>
+			<OverflowToolbar class="lineTableInfoToolbar">
+				 <Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Availability' :'Line Availability'}" class="tileSubContentHeading"></Text>
+            </OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='DTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='DTD'? 'Bold': 'Standard' }" text="DTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='3DAY'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='3DAY'? 'Bold': 'Standard' }" text="3DAY" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='WTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='WTD'? 'Bold': 'Standard' }" text="WTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='MTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='MTD'? 'Bold': 'Standard' }" text="MTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='YTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='YTD'? 'Bold': 'Standard' }" text="YTD" class="tileSubTitle"/> </Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+            <customData>
+                        <core:CustomData key="background" value="{= ${localModel>/machineClicked} === ${localModel>RESDESCR} ? 'rowHighlight' : '' }" writeToDom="true"/>
+                </customData>
+				<cells>
+                    <HBox justifyContent="Center">
+                        <!-- <Text visible="{= !${localModel>/isExplinePresent}}" text="{path: 'localModel>EXPLINEAVAILRATEDTD',formatter: '.formatter.float2Decimal'}" class="tileSubTitle"></Text>
+                        <Text visible="{localModel>/isExplinePresent}" text="{path: 'localModel>EXPAVAILRATEDTD',formatter: '.formatter.float2Decimal'}" class="tileSubTitle"></Text> -->
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEAVAILRATEDTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEAVAILRATEDTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPAVAILRATEDTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPAVAILRATEDTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEAVAILRATE3DAYS',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEAVAILRATE3DAYS',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPAVAILRATE3DAY',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPAVAILRATE3DAY',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEAVAILRATEWTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEAVAILRATEWTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPAVAILRATEWTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPAVAILRATEWTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEAVAILRATEMTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEAVAILRATEMTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPAVAILRATEMTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPAVAILRATEMTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEAVAILRATEYTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEAVAILRATEYTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPAVAILRATEYTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPAVAILRATEYTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                </cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    <!-- Quality Loss -->
+    <Table busy="{localModel>/bExplineBusy}" showNoData="false" showSeparators="None" class="lineTable lineTableContainer" items="{path:'localModel>/lineItems',templateShareable:true}">
+		<infoToolbar>
+			<OverflowToolbar class="lineTableInfoToolbar">
+				<Text text="{= ${localModel>/isExplinePresent}  ? 'Quality Rate' :'Quality Rate'}" class="tileSubContentHeading"></Text>
+            </OverflowToolbar>
+		</infoToolbar>
+        <columns>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='DTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='DTD'? 'Bold': 'Standard' }" text="DTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='3DAY'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='3DAY'? 'Bold': 'Standard' }" text="3DAY" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='WTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='WTD'? 'Bold': 'Standard' }" text="WTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='MTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='MTD'? 'Bold': 'Standard' }" text="MTD" class="tileSubTitle"/> </Column>
+			<Column hAlign="Center" styleClass="{= ${localModel>/filterSelected} ==='YTD'? 'columnHighlight': '' }"> <Label design="{= ${localModel>/filterSelected} ==='YTD'? 'Bold': 'Standard' }" text="YTD" class="tileSubTitle"/> </Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+            <customData>
+                        <core:CustomData key="background" value="{= ${localModel>/machineClicked} === ${localModel>RESDESCR} ? 'rowHighlight' : '' }" writeToDom="true"/>
+                </customData>
+				<cells>
+                    <HBox justifyContent="Center">  
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEQRDTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEQRDTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPQUALITYRATEDTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPQUALITYRATEDTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">    
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEQR3DAY',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEQR3DAY',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPQUALITYRATE3DAY',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPQUALITYRATE3DAY',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">    
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEQRWTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEQRWTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPQUALITYRATEWTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPQUALITYRATEWTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">    
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEQRMTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEQRMTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPQUALITYRATEMTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPQUALITYRATEMTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <ObjectStatus visible="{= !${localModel>/isExplinePresent}}" class="tileSubTitle" text="{path: 'localModel>EXPLINEQRYTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPLINEQRYTD',formatter: '.formatter.statusColor'}"/>
+                        <ObjectStatus visible="{localModel>/isExplinePresent}" class="tileSubTitle" text="{path: 'localModel>EXPQUALITYRATEYTD',formatter: '.formatter.float2Decimal'}"	state="{path: 'localModel>EXPQUALITYRATEYTD',formatter: '.formatter.statusColor'}"/>
+                    </HBox>
+                </cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

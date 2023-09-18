@@ -1,0 +1,14 @@
+<mvc:View controllerName="scm.ctc.dashboard.scmctcdashboard.controller.LiquidityForecast"  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page
+        showNavButton="false"
+        showHeader="false">
+        <content>
+        <OverflowToolbar id="otb1">
+        
+            <Button text="SAC" type="Transparent" press="fnSACPress"/>
+        </OverflowToolbar>
+			<html:iframe id="attachmentframeSecond" src="https://accenture-17.eu10.hcs.cloud.sap/sap/fpa/ui/tenants/4c587/app.html#/analyticapp&amp;/aa/39D1C9061C9B5C147732CA0DD66AB18F/?url_api=true&amp;mode=present&amp;view_id=appBuilding" width="90%" height="90%"/> 		
+		</content>
+	</Page>
+</mvc:View>

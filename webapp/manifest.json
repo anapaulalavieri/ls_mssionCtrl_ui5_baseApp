@@ -1,0 +1,200 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "scm.ctc.dashboard.scmctcdashboard",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/IBP/EXTRACT_ODATA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+             "cashPositionService": {
+                "uri": "/catalog/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "scm-ctc-dashboard-scmctcdashboard-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "scmsem",
+                    "action": "scmact",
+                    "title": "Supply Chain Tower",
+                    "subTitle": "",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "icon/favicon.ico",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "scm.ctc.dashboard.scmctcdashboard.view.App",
+            "type": "XML",
+            "async": true
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "scm.ctc.dashboard.scmctcdashboard.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            },
+             "cashPositionModel": {
+                "dataSource": "cashPositionService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None"
+                }
+            },
+            "oGlobalModel": {
+                "uri": "model/GlobalLocalData.json",
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                },
+                {
+                    "uri": "https://dubai-expo-sap.digital-consulting.ru/override.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "scm.ctc.dashboard.scmctcdashboard.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "firstlayer",
+                    "target": [
+                        "firstlayer"
+                    ]
+                },
+                {
+                    "pattern": "secondlayer/{plantDetail}",
+                    "name": "secondlayer",
+                    "target": [
+                        "secondlayer"
+                    ]
+                },
+                {
+                    "pattern": "thirdlayer/{plantName}/:expLine:",
+                    "name": "thirdlayer",
+                    "target": [
+                        "thirdlayer"
+                    ]
+                },
+                {
+                    "pattern": "fourthlayer/{plantName}/:expLine:",
+                    "name": "fourthlayer",
+                    "target": [
+                        "fourthlayer"
+                    ]
+                },
+                 {
+                    "pattern": "liquidityforecast",
+                    "name": "liquidityforecast",
+                    "target": [
+                        "liquidityforecast"
+                    ]
+                }
+            ],
+            "targets": {
+                "firstlayer": {
+                    "viewName": "FirstLayer",
+                    "viewId": "firstlayer",
+                    "viewLevel": 1
+                },
+                "secondlayer": {
+                    "viewName": "SecondLayer",
+                    "viewId": "secondlayer",
+                    "viewLevel": 2
+                },
+                "thirdlayer": {
+                    "viewName": "ThirdLayer",
+                    "viewLevel": 3
+                },
+                "fourthlayer": {
+                    "viewName": "FourthLayer",
+                    "viewLevel": 4
+                },
+                 "liquidityforecast": {
+                    "viewName": "LiquidityForecast",
+                    "viewId": "liquidityforecast",
+                    "viewLevel": 2
+                },
+                "TargetApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "App",
+                    "viewName": "App"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "scm-ctc-dashboard-scmctcdashboard"
+    }
+}

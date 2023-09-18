@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:smc="sap.suite.ui.microchart">
+	<VBox width="11rem" class="sidePanelTile sapUiNoMargin">
+		<FlexBox class="sapUiNoMargin" direction="Column" width="100%">
+            <HBox>
+                <Title class="tileHeaderTitle sapUiTinyMarginEnd" text="Operational"></Title>
+                <Label class="tileHeaderSubTitle sapUiTinyMarginTop" text="{oGlobalModel>/filterSelected}" />
+            </HBox>
+            <VBox class="tileContainer">
+				<VBox class="sapUiTinyMargin tilePlantAdhere tileContentSeperator">
+                    <Title class="tileSubContentHeading sapUiSmallMarginBegin sapUiTinyMarginTop" text="Plan Adherence"></Title>
+					<HBox justifyContent="SpaceBetween" class="tilePlantAdhereChild1">                 
+						<Text text="{path: 'oGlobalModel>/operationKPIData/EXPPLANADHERENCEDTD',formatter: '.formatter.float2Decimal'}%" busy="{oGlobalModel>/planAdherenceBusy}" class="tileKPIContent sapUiSmallMarginBegin"/>
+					</HBox>
+                    <HBox  justifyContent="SpaceBetween" alignItems="Center" class="tilePlantAdhereChild2">
+						<smc:ComparisonMicroChart view="Wide" width="9.75rem" minValue="0" maxValue="100" class="custMChart">
+							<smc:data>
+                                <smc:ComparisonMicroChartData title="DTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEDTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEDTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEDTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+                                <smc:ComparisonMicroChartData title="3Day" value="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCE3DAYS',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCE3DAYS',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCE3DAYS',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+                                <smc:ComparisonMicroChartData title="WTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEWTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEWTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEWTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+                                <smc:ComparisonMicroChartData title="MTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEMTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEMTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEMTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+                                <smc:ComparisonMicroChartData title="YTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEYTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEYTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANADHERENCEYTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+                           
+                            </smc:data>
+						</smc:ComparisonMicroChart>
+					</HBox>
+				</VBox>
+                <!-- <Text text="" class="tileContentSeperator"/> -->
+				<VBox class="tilePlantAvail sapUiTinyMargin">
+					<Title text="Plant Availability" class="sapUiSmallMarginBegin tileSubContentHeading"></Title>
+					<HBox justifyContent="SpaceBetween" class="tilePlantAvailChild1">
+						<Text  busy="{oGlobalModel>/plantAvailabilityBusy}" text="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEDTD',formatter: '.formatter.float2Decimal'}%" class="sapUiSmallMarginBegin tileKPIContent sapUiTinyMarginBottom"/>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" alignItems="Center" class="tilePlantAvailChild2">
+						<smc:ComparisonMicroChart view="Wide" width="9.75rem" minValue="0" maxValue="100" class="custMChart">
+							<smc:data>
+								<smc:ComparisonMicroChartData title="DTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEDTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEDTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEDTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								<smc:ComparisonMicroChartData title="3Day" value="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATE3DAYS',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATE3DAYS',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATE3DAYS',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								<smc:ComparisonMicroChartData title="WTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEWTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEWTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEWTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+                                <smc:ComparisonMicroChartData title="MTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEMTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEMTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEMTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								<smc:ComparisonMicroChartData title="YTD" value="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEYTD',formatter: '.formatter.floatValueCMC'}" color="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEYTD',formatter: '.formatter.statusColorPlant'}" displayValue="{path:'oGlobalModel>/operationKPIData/EXPPLANTAVAILRATEYTD',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+							</smc:data>
+						</smc:ComparisonMicroChart>
+					</HBox>
+				</VBox>
+			</VBox>
+		</FlexBox>
+	</VBox>
+</core:FragmentDefinition>

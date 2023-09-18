@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart">
+	<VBox width="11rem" class="sapUiSmallMarginBottom">
+		<FlexBox direction="Column" width="100%" class="sapUiNoMargin">
+        <HBox>
+				<Title class="tileHeaderTitle" 	wrapping="true" text="Circularity (CTI)"></Title>
+                <core:Icon
+                        src="sap-icon://action"
+                        class="CTIIcon sapUiTinyMarginBegin sapUiTinyMarginTop"
+                        color="#858F93"
+                        press = "onSustainabilityLinkPress" > 
+                </core:Icon>
+            </HBox>
+			<VBox class="tileContainer">
+                <VBox id="idCircularSust" class="sapUiTinyMargin">
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Circular Inflow"></Text>
+						<Text busy="{worklistView>/CircularityBusy}" class="tinyFont sapUiSmallMarginEnd" text="{path:'cashPositionModel>value/0/CloseLoop_CircularInflow', targetType: 'any'}%"></Text>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Circular Outflow"></Text>
+						<Text  busy="{worklistView>/CircularityBusy}" class="tinyFont sapUiSmallMarginEnd" text="{path:'cashPositionModel>value/0/CloseLoop_CircularOutflow', targetType: 'any'}%"></Text>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Critical Inflow"></Text>
+						<Text  busy="{worklistView>/CircularityBusy}" class="tinyFont sapUiSmallMarginEnd" text="{path:'cashPositionModel>value/0/OptimizeLoop_CriticalInflow', targetType: 'any'}%"></Text>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Water Circularity"></Text>
+						<Text  busy="{worklistView>/CircularityBusy}" class="tinyFont sapUiSmallMarginEnd" text="{path:'cashPositionModel>value/0/WaterCircularity', targetType: 'any'}%"></Text>
+					</HBox>
+					<!-- <HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Supply Chain"></Text>
+						<Text class="tinyFont sapUiSmallMarginEnd" text="{worklistView>/sEXPSUPPLYCHAINMILES}M"></Text>
+					</HBox> -->
+			    </VBox>
+			</VBox>
+		</FlexBox>
+</VBox>
+</core:FragmentDefinition>

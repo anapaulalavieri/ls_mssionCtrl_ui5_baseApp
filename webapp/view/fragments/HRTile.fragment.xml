@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:smc="sap.suite.ui.microchart">
+	<VBox width="11rem" class="sidePanelTile sapUiNoMargin">
+		<FlexBox class="sapUiNoMargin" direction="Column" width="100%">
+            <HBox>
+                <Title class="tileHeaderTitle sapUiTinyMarginEnd" text="HR"></Title>
+                <Label class="tileHeaderSubTitle sapUiTinyMarginTop" text="YTD" />
+            </HBox>
+            <VBox class="tileContainer">
+				<VBox class="sapUiTinyMargin tileContentSeperator">
+                    <Title class="tileSubContentHeading sapUiSmallMarginBegin sapUiTinyMarginTop" text="Diversity Ratio"></Title>
+					<HBox justifyContent="SpaceBetween" height="2.5rem" busy="{worklistView>/diversityRatioBusy}" >
+						<Text text="{path: 'oGlobalModel>/HRKPIData/EXPDIVERSITYRATIO',formatter: '.formatter.float2Decimal'}%" class="sapUiSmallMarginBegin tileKPIContent"/>
+					</HBox>
+				</VBox>
+                <!-- <Text text="" class="tileContentSeperator"/> -->
+				<VBox class="tilePlantAvail sapUiTinyMargin">
+					<Title text="Total Headcount" class="sapUiSmallMarginBegin tileSubContentHeading"></Title>
+					<HBox justifyContent="SpaceBetween" class="tilePlantAvailChild1" busy="{worklistView>/totalHeadcountBusy}">
+						<Text text="{path: 'oGlobalModel>/HRKPIData/EXPTOTALHEADCOUNT',formatter: '.formatter.parseIntFormat'}"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom tileKPIContent"/>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" alignItems="Center" class="tilePlantAvailChild2">
+						<smc:ComparisonMicroChart view="Wide" width="9rem" minValue="0" maxValue="100" class="custMChart">
+							<smc:data>
+								<smc:ComparisonMicroChartData title="Male" value="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTMALE',formatter: '.formatter.floatValueCMC'}" color="Good" displayValue="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTMALE',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								<smc:ComparisonMicroChartData title="Female" value="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTFEMALE',formatter: '.formatter.floatValueCMC'}" color="Good" displayValue="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTFEMALE',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								<smc:ComparisonMicroChartData title="LGBT" value="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTLGBT',formatter: '.formatter.floatValueCMC'}" color="Good" displayValue="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTLGBT',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								<!-- <smc:ComparisonMicroChartData title="LGBT" value="60" color="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTLGBT',formatter: '.formatter.statusColorPlant'}" displayValue="{path: 'oGlobalModel>/HRKPIData/EXPHEADCOUNTLGBT',formatter: '.formatter.float2Decimal'}%"></smc:ComparisonMicroChartData>
+								     <smc:ComparisonMicroChartData title="MTD" value="60" color="Good" displayValue="{oGlobalModel>/HRKPIData/sEXPPLANTAVAILRATEMTD}%"></smc:ComparisonMicroChartData> -->
+							</smc:data>
+						</smc:ComparisonMicroChart>
+					</HBox>
+				</VBox>
+			</VBox>
+		</FlexBox>
+	</VBox>
+</core:FragmentDefinition>

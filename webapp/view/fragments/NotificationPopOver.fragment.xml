@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopover"
+        showHeader="false"
+		class="custNotPopOver sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom">
+		<content>
+        <FlexBox class="notvbox">
+        </FlexBox>
+        <VBox class="tileContentNotWrapper">
+        <Title wrapping="true" class="tileSubContentHeading sapUiTinyMarginBeginEnd sapUiTinyMarginTop" text="Machine {localModel>/sNotMachine} : spare part delay-"></Title>
+             <!-- <Title wrapping="true" class="tileSubContentHeading sapUiTinyMarginBeginEnd sapUiTinyMarginTop" text="Machine 24 : Spare part delay"></Title> -->
+           <Title wrapping="true" class="tileSubContentHeading sapUiTinyMarginBeginEnd sapUiTinyMarginTop" text="delivery delayed by {localModel>/sDelDelayed} days,"></Title>
+             <Title wrapping="true" class="tileSubContentHeading sapUiTinyMarginBeginEnd sapUiTinyMarginTop" text="potential line downtime {localModel>/sDownTime} days"></Title>
+             <HBox>
+              <Title wrapping="true" class="tileSubContentHeading sapUiTinyMarginBeginEnd sapUiTinyMarginTop" text="Contact Buyer"></Title>
+              	<core:Icon
+                        src="sap-icon://BusinessSuiteInAppSymbols/icon-answered-change-request"
+                       height="1.6rem"
+                       width="1.6rem"
+                       press="fnNotificationUrl"
+                        color="#A95DF1">
+                      </core:Icon>  
+             </HBox>
+        </VBox>
+        
+        </content>
+	</Popover>
+</core:FragmentDefinition>

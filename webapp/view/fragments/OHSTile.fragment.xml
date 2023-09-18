@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart">
+	
+		<FlexBox direction="Column" width="100%" class="custTile_Wrapper" busy="{oGlobalModel>/OHSBusy}">
+			<HBox class="HdrTitleWrapper">
+				<Title text="OHS" class="tileHeaderTitle"></Title>
+				<!-- <Text text="YTD" class="tileSubTitle"></Text> -->
+			</HBox>
+			<VBox class="tileContentWrapper transparentBg">
+				<VBox class="tileContent_List" width="100%">
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Serious Injury"></Text>
+						<Text class="tinyFont sapUiSmallMarginEnd" text="{oGlobalModel>/OHSKPIData/EXPSINJURY}"></Text>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Minor Injury"></Text>
+						<Text class="tinyFont sapUiSmallMarginEnd" text="{oGlobalModel>/OHSKPIData/EXPMINJURY}"></Text>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Property Damage"></Text>
+						<Text class="tinyFont sapUiSmallMarginEnd" text="{oGlobalModel>/OHSKPIData/EXPPROPERTYDMG}"></Text>
+					</HBox>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<Text class="tileSubTitle sapUiSmallMarginBegin" text="Near Misses"></Text>
+						<Text class="tinyFont sapUiSmallMarginEnd" text="{oGlobalModel>/OHSKPIData/EXPNEARMISS}"></Text>
+					</HBox>
+				</VBox>
+			</VBox>
+		</FlexBox>
+
+</core:FragmentDefinition>

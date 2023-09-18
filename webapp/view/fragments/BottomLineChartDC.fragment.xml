@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+
+    <Table busy="{localModel>/bExplineBusy}" showNoData="false" showSeparators="None" class="lineTable lineLabelChart linetablemargin" items="{path:'localModel>/InventoryKPIData',templateShareable:true}">
+        <columns>
+			<Column width="6rem" hAlign="Center"> <Text text=" " class="tileSubTitle"/> </Column>
+		</columns>
+		<items>
+			<ColumnListItem press="onMachineItemClick" type="Active">
+				<cells>
+                    <HBox>  
+                     <core:Icon class="sapUiTinyMarginEnd" visible = "{= ${localModel>/isExplinePresent}  ? false : true }" size="0.5rem" src="sap-icon://circle-task-2"  color="{path:'localModel>PRDID',formatter: '.formatter.legendColour'}"> </core:Icon>
+                        <Text width="5rem" visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>PRDID}" class="tileSubTitle"></Text>
+                    </HBox>
+                </cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+		<HBox width="80%">
+            <VBox >
+                <Text text="Inventory Turnover" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bFirstVizFrame}"  class="vizframLine" height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"  xmlns="sap.viz" id="FL1vizFrameid"/>
+            </VBox>
+            <VBox class="tablemargin">
+                <Text text="Inventory to sales ratio" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bSecondVizFrame}"  class="vizframLine sapUiSmallMarginBottom"  height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"   xmlns="sap.viz" id="FLvizFrameid"/>
+            </VBox>
+            
+        </HBox>
+    
+</core:FragmentDefinition>

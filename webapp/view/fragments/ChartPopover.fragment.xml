@@ -1,0 +1,57 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover id="chartPopover" placement="Top" class="popOverWidth" showHeader="false">
+		<Table items="{path:'localModel>/selectedPointData',templateShareable:true}" showNoData="false" showSeparators="None" class="popoverTable sapUiSmallMarginBottom">
+        <columns >
+            <Column width="{= ${localModel>/isExplinePresent}  ? '4rem' : '5rem' }" > <Text text="" class="tileSubTitle" /> </Column>
+			<Column  >  <Text  text="Utilization" class="tileSubTitle sapUiSmallMarginBegin" width="{= ${localModel>/isExplinePresent}  ? '' : '4rem' }"/></Column>
+            <Column > <Text text="Availability" class="tileSubTitle sapUiSmallMarginBegin" width="{= ${localModel>/isExplinePresent}  ? '' : '4rem' }"/> </Column>
+            <Column > <Text text="Quality Rate" class="tileSubTitle sapUiSmallMarginBegin" width="{= ${localModel>/isExplinePresent}  ? '' : '4rem' }"/> </Column>
+		</columns>
+		<items>
+             <ColumnListItem press="onMachineItemClick" >
+                    <cells>
+                        <HBox justifyContent="Center">
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle" ></Text>
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle"></Text>  
+                        </HBox>
+                        <HBox justifyContent="Center">
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{path: 'localModel>EXPLINEUTILIZATIONRATE',formatter: '.formatter.float2Decimal'}" ></Text>
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{path: 'localModel>EXPUTILIZATIONRATE',formatter: '.formatter.float2Decimal'}" ></Text>  
+                        </HBox>
+                        <HBox justifyContent="Center">
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{path: 'localModel>EXPLINEAVAILRATE',formatter: '.formatter.float2Decimal'}" ></Text>
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{path: 'localModel>EXPAVAILRATE',formatter: '.formatter.float2Decimal'}" ></Text>  
+                        </HBox>
+                        <HBox justifyContent="Center">
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{path: 'localModel>EXPLINEQUALITYRATE',formatter: '.formatter.float2Decimal'}" ></Text>
+                            <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{path: 'localModel>EXPQUALITYRATE',formatter: '.formatter.float2Decimal'}" ></Text>  
+                        </HBox>                    
+                    </cells>
+                </ColumnListItem>
+			<!-- <ColumnListItem press="onMachineItemClick" type="Active"> -->
+				<!-- <cells>
+                    <HBox justifyContent="Center">
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle"></Text>
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle"></Text>  
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle"></Text>
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle"></Text>  
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle"></Text>
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle"></Text>  
+                    </HBox>
+                    <HBox justifyContent="Center">
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle"></Text>
+                        <Text visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle"></Text>  
+                    </HBox>
+                </cells> -->
+               
+                
+		</items>
+	</Table>
+	</Popover>
+</core:FragmentDefinition>

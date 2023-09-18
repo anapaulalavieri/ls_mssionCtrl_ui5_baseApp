@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<FlexBox class="sapUiMediumMarginBegin margin" width="60%" renderType="Div" direction="Column">
+     <Toolbar class="toolbarFooter bottomToolbarPadding">
+			<Text text="Warehouse Insights" class="tileTitle"></Text>
+            <Text text="%" class="tileSubTitle sapUiTinyMarginTop"></Text>
+            <ToolbarSpacer/>
+            <core:Icon src="sap-icon://line-charts" size="1rem"  color="{=${localModel>/isTableMode} ? '#858f93': '#404040'}" press="onChartModePress"/>
+            <core:Icon src="sap-icon://menu" size="1rem"  color="{=${localModel>/isTableMode} ? '#404040': '#858f93'}" press="onTableModePress"/>
+        </Toolbar>
+		<FlexBox direction="Row" class="containerbottomTransparent whiteBg" height="10.5rem" width="100%">
+            <HBox class="sapUiSmallMargin" width="76%">
+                    <HBox visible="{localModel>/isTableMode}">
+                    <core:Fragment fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.BottomLineTableDC" type="XML"/>
+                    </HBox>
+                    <HBox visible="{= !${localModel>/isTableMode}}">
+                    <core:Fragment fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.BottomLineChartDC" type="XML"/>
+                    </HBox>
+             </HBox>
+		</FlexBox>
+	</FlexBox>
+</core:FragmentDefinition>

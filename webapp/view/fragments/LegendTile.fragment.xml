@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:smc="sap.suite.ui.microchart">
+	<VBox alignItems="Center" width="11rem" class="legendKPI">
+	<HBox>
+     <Image src="{worklistView>/DCLegend}"></Image>
+    <Text class="tinyFont sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginEnd" text="DC"></Text>
+     <Image src="{worklistView>/plantLegend}"></Image>
+     <Text class="tinyFont sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginEnd" text="Plant"></Text>
+    </HBox>
+    <HBox class="sapUiSmallMarginTop">
+    <Image class="sapUiTinyMarginBegin" height="1.5rem" src="{worklistView>/StarLegend}"></Image>
+    <Text class="tinyFont sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginEnd" text="High Availability Plant"></Text>
+	</HBox>
+    </VBox>
+</core:FragmentDefinition>

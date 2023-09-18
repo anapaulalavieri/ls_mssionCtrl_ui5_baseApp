@@ -1,0 +1,224 @@
+<core:FragmentDefinition xmlns="sap.m" 
+      xmlns:core="sap.ui.core" 
+      xmlns:smc="sap.suite.ui.microchart"
+	  xmlns:viz="sap.viz.ui5.controls" 
+      xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+      xmlns:viz.data="sap.viz.ui5.data">
+	<FlexBox class="sapUiMediumMarginBegin" width="95%" renderType="Div" direction="Column">
+		<Toolbar class="toolbarFooter bottomToolbarPadding">
+			<Title text="Sales" class="tileHeaderTitle"></Title>
+			<Text text="YTD - $M" class="tileSubTitle"></Text>
+        </Toolbar>
+		<FlexBox direction="Row" height="9rem" width="100%" class="tileMainContainer">
+			<HBox justifyContent="SpaceAround" class="tileContainer whiteBg bottomSubTile" width="60%">
+				<VBox class="tileContent_Common tilePlantAvail sapUiSmallMarginBegin" width="15%">
+					<HBox>
+                     <core:Icon
+                        src="sap-icon://color-fill"
+                        class="iconPosition"
+                        color="#A95DF1"> 
+                    </core:Icon>
+                    <Title text="Revenue" class="RevenueValueTitle sapUiSmallMarginBegin tileSubContentHeading sapUiTinyMarginBottom"></Title>
+                    </HBox>
+					<VBox justifyContent="SpaceBetween" busy="{worklistView>/SalesBusy}"  class="tileSubContent tilePlantAvailChild1">
+						<Text   text="{worklistView>/sEXPREVENUEYTD}" class="sapMNCLargeFontSize tileKPIContent"></Text>
+						<HBox alignItems="Center" width="100%">
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text  text="{worklistView>/sEXPREVENUEMTD}" class="tinyFont sapUiTinyMarginBegin"></Text>
+						</HBox>
+					</VBox>
+					<VBox class="tileSubContent tilePlantAvailChild2">
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="DTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPREVENUEDTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="3 Day" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPREVENUE3DAYS}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="WTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPREVENUECWTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPREVENUEMTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+					</VBox>
+				</VBox>
+				<VBox class="tilePlantAvail tileContent_Common" width="15%">
+                <HBox>
+                     <core:Icon
+                        src="sap-icon://color-fill"
+                        class="iconPosition"
+                        color="#C7CCD3"> 
+                    </core:Icon>
+					<Title class="tileSubContentHeading sapUiSmallMarginBegin sapUiTinyMarginBottom" text="COGS"></Title>
+                  </HBox>  
+					<VBox busy="{worklistView>/SalesBusy}" justifyContent="SpaceBetween" alignItems="Start" class="tileSubContent tilePlantAvailChild1">
+						<!-- <NumericContent value="{worklistView>/sEXPCOGSYTD}" valueColor="Error" withMargin="false"></NumericContent> -->
+						<Text   text="{worklistView>/sEXPCOGSYTD}" class="CogsValueTitle sapMNCLargeFontSize tileKPIContent"/>
+						<HBox alignItems="Start">
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text  text="{worklistView>/sEXPCOGSMTD}" class="tinyFont sapUiTinyMarginBegin"></Text>
+						</HBox>
+					</VBox>
+					<VBox class="tileSubContent tilePlantAvailChild2">
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="DTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPCOGSDTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="3 Day" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPCOGS3DAYS}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="WTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPCOGSCWTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPCOGSMTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+					</VBox>
+				</VBox>
+				<VBox class="tilePlantAvail tileContent_Common" width="15%">
+					<HBox>
+                     <core:Icon
+                        src="sap-icon://circle-task"
+                        class="iconPosition"
+                        color="#A95DF1"> 
+                    </core:Icon>
+                    <Title text="Gross Profit" class="tileSubContentHeading sapUiSmallMarginBegin sapUiTinyMarginBottom"></Title>
+					</HBox>
+                    <VBox busy="{worklistView>/SalesBusy}"  justifyContent="SpaceBetween" alignItems="Start" class="tileSubContent tilePlantAvailChild1">
+						<!-- <NumericContent value="{worklistView>/sEXPGROSSPROFITYTD}" valueColor="Error" withMargin="false"></NumericContent> -->
+						<Text  text="{worklistView>/sEXPGROSSPROFITYTD}" class="sapMNCLargeFontSize tileKPIContent"/>
+						<HBox alignItems="Start">
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text   text="{worklistView>/sEXPGROSSPROFITMTD}" class="tinyFont sapUiTinyMarginBegin"></Text>
+						</HBox>
+					</VBox>
+					<VBox class="tileSubContent tilePlantAvailChild2">
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="DTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPGROSSPROFITDTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="3 Day" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPGROSSPROFIT3DAYS}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="WTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPGROSSPROFITCWTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+						<HBox justifyContent="SpaceBetween" alignItems="End">
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text text="{worklistView>/sEXPGROSSPROFITMTD}" class="sapUiTinyMarginBegin"></Text>
+						</HBox>
+					</VBox>
+				</VBox>
+                <VBox width="55%" height="9rem" class="sapUiTinyMargin">
+                    <viz:VizFrame busy="{worklistView>/SalesBusy}" class="lineChartDotColor myChart3 sapUiSmallMarginBottom" height="10rem" width="100%" xmlns="sap.viz" id="vizFrameid" selectData="fnSelecteVizData"/>
+                </VBox>
+			</HBox>
+			<HBox justifyContent="SpaceAround" width="40%">
+            	<VBox class="tileContent_Common">
+                    <HBox>
+				    	<Title text="Cash Position $M" class="tileSubContentHeading sapUiTinyMarginBottom"></Title>
+                            <core:Icon
+                            src="sap-icon://action"
+                            class="iconPosition sapUiTinyMarginBegin sapUiTinyMarginBottom"
+                            press="fnNavigateCashPosition"
+                            color="#858F93" > 
+                        </core:Icon>
+                    </HBox>  
+	    				<VBox justifyContent="SpaceBetween" alignItems="Start" class="tileSubContent" height="2.5rem">
+                        <!-- <Text  text="{path: 'cashPositionModel>value/0/KPI', targetType: 'any'}" class="CogsValueTitle sapMNCLargeFontSize fontTypeKPI"/> -->
+			    			<Text id="txtCashPosition" text="{path:'cashPositionModel>value/0/KPI',formatter: '.formatter.convertToBillion', targetType: 'any'}" class="CogsValueTitle sapMNCLargeFontSize tileKPIContent"/>
+				    	<!--	<Text text="{path:'worklistView>/sCostPosition/KPI',formatter: '.formatter.convertToMillion'} " class="CogsValueTitle sapMNCLargeFontSize tileKPIContent"/>-->
+                        <!-- <NumericContent value="1.96" valueColor="Good" withMargin="false"></NumericContent> -->
+					    </VBox>
+				</VBox>
+				<VBox class="tileContent_Common">
+                    <HBox>
+					    <Title text="Cash Forecaster $M" class="tileSubContentHeading sapUiMediumMarginBegin"></Title>
+                          <core:Icon
+                            src="sap-icon://action"
+                            class="iconPosition sapUiTinyMarginBegin sapUiTinyMarginBottom"
+                            press="fnNavigateCashForecaster"
+                            color="#858F93" > 
+                        </core:Icon>
+                        <!-- <core:Icon
+                                src="sap-icon://action"
+                            class="iconPosition sapUiTinyMarginBegin sapUiTinyMarginBottom"
+                            color="#858F93" > 
+                        </core:Icon> -->
+		    		</HBox>	
+                    <HBox id="forecasterMC" justifyContent="SpaceBetween" alignItems="Center" class="tileSubContent">
+                    
+				        <smc:ColumnMicroChart size="M" width="13rem" press="press" class="sapUiSmallMarginTop microchartWidth" allowColumnLabels="true">
+					    	
+                            
+					    	<smc:columns>
+                                
+						    	<smc:ColumnMicroChartData value="{path:'cashPositionModel>value/0/actual_val',formatter: '.formatter.Billion', targetType: 'any'}" label="{path:'cashPositionModel>value/0/month',formatter: '.formatter.Month', targetType: 'any'}" color="#F0F1F5" tooltip=""/>                                 
+							    <smc:ColumnMicroChartData value="{path:'cashPositionModel>value/1/actual_val',formatter: '.formatter.Billion', targetType: 'any'}" label="{path:'cashPositionModel>value/1/month',formatter: '.formatter.Month', targetType: 'any'}" color = "#F0F1F5" tooltip=""/>
+    							<smc:ColumnMicroChartData value="{path:'cashPositionModel>value/2/actual_val',formatter: '.formatter.Billion', targetType: 'any'}" label="{path:'cashPositionModel>value/2/month',formatter: '.formatter.Month', targetType: 'any'}" tooltip=""  color="#F0F1F5"/>
+	    						<smc:ColumnMicroChartData value="{path:'cashPositionModel>value/3/forecast_val',formatter: '.formatter.Billion', targetType: 'any'}" label="{path:'cashPositionModel>value/3/month',formatter: '.formatter.Month', targetType: 'any'}" tooltip="" color="Neutral" />
+		    					<smc:ColumnMicroChartData value="{path:'cashPositionModel>value/4/forecast_val',formatter: '.formatter.Billion', targetType: 'any'}" label="{path:'cashPositionModel>value/4/month',formatter: '.formatter.Month', targetType: 'any'}" tooltip="" color="Good"/>
+                                <smc:ColumnMicroChartData value="{path:'cashPositionModel>value/5/forecast_val',formatter: '.formatter.Billion', targetType: 'any'}" label="{path:'cashPositionModel>value/5/month',formatter: '.formatter.Month', targetType: 'any'}"  tooltip="" color="Good"/>
+			    			</smc:columns>
+				    	</smc:ColumnMicroChart>
+                        <!-- <smc:ColumnMicroChart size="M" width="8.5rem" press="press" class="sapUiSmallMarginTop microchartWidth" allowColumnLabels="true">
+                            <smc:leftTopLabel>
+                                <smc:ColumnMicroChartLabel label="0M" color="Good"/>
+                            </smc:leftTopLabel>
+                            <smc:rightTopLabel>
+                                <smc:ColumnMicroChartLabel label="80M" color="Critical"/>
+                            </smc:rightTopLabel>
+                            <smc:leftBottomLabel>
+                                <smc:ColumnMicroChartLabel label="June 1"/>
+                            </smc:leftBottomLabel>
+                            <smc:rightBottomLabel>
+                                <smc:ColumnMicroChartLabel label="June 30"/>
+                            </smc:rightBottomLabel>
+                            <smc:columns>
+                                <smc:ColumnMicroChartData value="60" label="1W" color="Error"/>
+                                <smc:ColumnMicroChartData value="80" label="2W" color="Error"/>
+                                <smc:ColumnMicroChartData value="20" label="3W" color="Error"/>
+                                <smc:ColumnMicroChartData value="60" label="4W" color="Neutral" class="microChartColor"/>
+                                <smc:ColumnMicroChartData value="55" label="5W" color="Neutral" class="microChartColor"/>
+                            </smc:columns>
+                        </smc:ColumnMicroChart> -->
+				    </HBox>
+				</VBox>
+			
+				<VBox class="tileContent_Common">
+					<HBox alignItems="Start">
+                    <Title text="Customer OTIF" class="tileSubContentHeading sapUiTinyMarginBottom"></Title>
+                      <core:Icon
+                        src="sap-icon://message-warning"
+                        class="iconPosition sapUiTinyMarginBegin sapUiTinyMarginBottom"
+                        enabled="false"
+                        color="#858F93" > 
+                    </core:Icon>
+                    </HBox>
+					<VBox busy="{worklistView>/SalesBusy}" justifyContent="SpaceBetween" alignItems="Start" class="tileSubContent" height="2.5rem">
+						<Text   text="{worklistView>/sEXPCUSTOTIFYTD}" class="RedValueTitle sapMNCLargeFontSize tileKPIContent"/>
+                        <!-- <NumericContent value="{worklistView>/sEXPCUSTOTIFYTD}" valueColor="Good" withMargin="false"></NumericContent> -->
+					
+                    	<HBox alignItems="Start" justifyContent="SpaceAround" width="100%">
+						
+							<Text text="MTD" class="tileSubTitle"></Text>
+							<Text  text="{worklistView>/sEXPCUSTOTIFMTD}" class="tinyFont sapUiTinyMarginBegin"></Text>
+							<Text text="WTD" class="tileSubTitle sapUiSmallMarginBegin"></Text>
+							<Text  text="{worklistView>/sEXPCUSTOTIFWTD}" class="tinyFont sapUiTinyMarginBegin"></Text>
+						
+						</HBox>
+                    </VBox>    
+				</VBox>
+			</HBox>
+		</FlexBox>
+	</FlexBox>
+</core:FragmentDefinition>

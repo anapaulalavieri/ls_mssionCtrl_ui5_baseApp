@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart">
+	<VBox width="11rem" class="sapUiSmallMarginBottom">
+		<FlexBox direction="Column"  width="100%" visible="{=${localModel>/plantName} === 'Plant Frankfurt' ? true : false}" class="sapUiSmallMarginTop">
+        <HBox>
+				<Title class="tileHeaderTitle" 	wrapping="true" text="High Availability"></Title>
+
+            </HBox>
+			<VBox class="tileContainer">
+               <VBox class="sapUiTinyMargin custLineItem1" width="100%">
+                    <CustomListItem press="onPerformingItemClick" type="Active">
+                        <VBox   alignItems="Start">
+                            <Text text="Plant Name" class="tileSubTitle">
+                             
+                            </Text>
+                            <Text text="{localModel>/oPerformingMachine/LOCDESCR}" class="tinyFont">
+                        
+                            </Text>
+                        </VBox>            
+                    </CustomListItem>
+                      <CustomListItem press="onPerformingItemClick" type="Active">
+                        <VBox  alignItems="Start">
+                            <Text text="Machine" class="tileSubTitle">
+                             
+                            </Text>
+                            <Text text="{localModel>/oPerformingMachine/RESDESCR}" class="tinyFont">
+                        
+                            </Text>
+                        </VBox>            
+                    </CustomListItem>
+                      <CustomListItem press="onPerformingItemClick" type="Active">
+                        <VBox  alignItems="Start">
+                            <Text text="Availability Rate" class="tileSubTitle">
+                             
+                            </Text>
+                            <Text text="{path: 'localModel>/oPerformingMachine/EXPAVAILRATE',formatter: '.formatter.float2Decimal'}" class="tinyFont">
+                        
+                            </Text>
+                        </VBox>            
+                    </CustomListItem>
+                </VBox>
+			</VBox>
+		</FlexBox>
+</VBox>
+</core:FragmentDefinition>

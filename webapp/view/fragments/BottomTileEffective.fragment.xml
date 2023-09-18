@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<FlexBox class="sapUiMediumMarginBegin" width="95%" renderType="Div" direction="Column">
+	    <Toolbar class="toolbarFooter bottomToolbarPadding">
+			<Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Effectiveness' :'Overall Line Effectiveness'  }" class="tileTitle"></Text>
+			<Text text="%" class="tileSubTitle sapUiTinyMarginTop"></Text>
+            <ToolbarSpacer/>
+            <core:Icon src="sap-icon://line-charts" size="1rem"  color="{=${localModel>/isTableMode} ? '#858f93': '#404040'}" press="onChartModePress"/>
+            <core:Icon src="sap-icon://menu" size="1rem"  color="{=${localModel>/isTableMode} ? '#404040': '#858f93'}" press="onTableModePress"/>
+        </Toolbar>
+		<FlexBox direction="Row" class="containerbottomTransparent whiteBg" height="10.5rem" width="100%">
+			<HBox justifyContent="SpaceAround" width="26%">
+				<VBox width="50%" class="sapUiSmallMargin custLineItem1" items="{localModel>/bottleNeckItem}">
+					<CustomListItem press="onListItemClick" type="Active">
+                    <VBox busy="{localModel>/bBottleneckBusy}" class="sapUiSmallMarginBegin">
+                        <Text text="Bottleneck:"  wrapping="true" visible="{path:'localModel>EXPLINEMACHINEEFFECTIVENESS',formatter: '.formatter.bottleneckVisible'}" class="tileSubContentHeading"></Text>
+                        <Text text="{localModel>EXPLINE}" wrapping="true" class="tileSubContentHeading">
+                            <customData>
+                                <core:CustomData key="colour" value="{=${localModel>EXPLINE} === ${localModel>/expLine} ? 'listSelectItem':''}" writeToDom="true" />
+                            </customData>
+                        </Text>
+                        <Text text="{path:'localModel>EXPLINEMACHINEEFFECTIVENESS',formatter: '.formatter.float2Decimal'}" class="fontBottleNeckKPI">
+                            <customData>
+                                <core:CustomData key="colour" value="{=${localModel>EXPLINE} === ${localModel>/expLine} ? 'listSelectItem':''}" writeToDom="true" />
+                            </customData>
+                        </Text>
+                    </VBox>    
+				   </CustomListItem>
+				</VBox>
+                <VBox busy="{localModel>/bBottleneckBusy}" class="sapUiSmallMargin custLineItem1" width="50%" items="{localModel>/nonBottleNeckItems}">
+                    <CustomListItem press="onListItemClick" type="Active">
+                        <VBox alignItems="Start">
+                            <Text text="{localModel>EXPLINE}" class="fontWeightBottleNeck">
+                             <customData>
+                                <core:CustomData key="colour" value="{=${localModel>EXPLINE} === ${localModel>/expLine} ? 'listSelectItem':''}" writeToDom="true"  />
+                            </customData>
+                            </Text>
+                            <Text text="{path:'localModel>EXPLINEMACHINEEFFECTIVENESS',formatter: '.formatter.float2Decimal'}" class="tinyFont">
+                             <customData>
+                                <core:CustomData key="colour" value="{=${localModel>EXPLINE} === ${localModel>/expLine} ? 'listSelectItem':''}" writeToDom="true" />
+                            </customData>
+                            </Text>
+                        </VBox>            
+                    </CustomListItem>
+                </VBox>
+            </HBox>
+            <HBox class="sapUiSmallMargin verticalLineBottom" width="76%">
+                    <HBox visible="{localModel>/isTableMode}">
+                    <core:Fragment fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.BottomLineTable" type="XML"/>
+                    </HBox>
+                    <HBox visible="{= !${localModel>/isTableMode}}">
+                    <core:Fragment fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.BottomLineChart" type="XML"/>
+                    </HBox>
+             </HBox>
+		</FlexBox>
+	</FlexBox>
+</core:FragmentDefinition>

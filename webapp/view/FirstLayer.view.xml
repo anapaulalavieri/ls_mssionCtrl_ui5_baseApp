@@ -1,0 +1,46 @@
+<mvc:View controllerName="scm.ctc.dashboard.scmctcdashboard.controller.FirstLayer" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:smc="sap.suite.ui.microchart">
+        <Page title="{i18n>title}" showHeader="false">
+            <content>
+                <html:iframe id="attachmentframe" class="style3DMdl" src="https://dubaiexpoiframe.cfapps.eu10.hana.ondemand.com/#model"></html:iframe>
+               
+                <FlexBox direction="Row" justifyContent="SpaceBetween" renderType="Div" class="sapUiMediumMarginBeginEnd sapUiTinyMarginTop">
+                     <VBox alignItems="End" justifyContent="Start">
+                         <core:Fragment id="_IDFLOperationalTile" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.OperationalTile" type="XML"/>
+                           <core:Fragment fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.LegendTile" type="XML"/>
+                       
+                    </VBox>
+                  
+                    <VBox  alignItems="End" justifyContent="Start" width="11rem">
+                        <core:Fragment id="_IDFLSustainabilityTile" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.Sustainability" type="XML"/>
+                        <core:Fragment id="_IDFLHRTile" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.HRTile" type="XML"/>
+                    </VBox>
+                </FlexBox>
+                 <HBox class="testKPI" justifyContent="Center" width="100%"> 
+                    <!-- <Image src="{oGlobalModel>/accentureImg}" class="sapUiTinyMarginTop"  height="1.75rem"></Image> -->
+                    <HBox class="testBread" items="{worklistView>/navContent}" justifyContent="Start" alignItems="Center">
+                         <HBox justifyContent="Start">
+                            <!-- <Text text="/" class="sapUiTinyMarginBeginEnd breadCrumbsFontSize"/> -->
+                            <Text text="{worklistView>navName}" class="breadCrumbsFontSize"/>
+                        </HBox>
+                    </HBox>
+                    <HBox class="sapUiTinyMarginBegin">
+                        <Select selectedKey="{worklistView>/region}" change="onHeaderSelectChange" class="selectFilter sapUiTinyMarginEnd sapUiTinyMarginTop" width="8rem" items="{worklistView>/aRegionArray}" >
+                            <core:Item key="{worklistView>CUSTREGION}" text="{worklistView>CUSTREGION}"/>
+                        </Select>
+                        <Select selectedKey="{worklistView>/country}" change="onHeaderSelectChange" class="selectFilter sapUiTinyMarginEnd sapUiTinyMarginTop" width="8rem" items="{worklistView>/aCountryArray}">
+                            <core:Item key="{worklistView>CUSTCOUNTRY}" text="{worklistView>COUNTRYNAME}"/>
+                        </Select>
+                        <!-- <Select selectedKey="{worklistView>/channel}" change="onHeaderSelectChange" class="selectFilter sapUiTinyMarginEnd sapUiTinyMarginTop" width="8rem"  items="{worklistView>/aChannelArray}">
+                            <core:Item key="{worklistView>CUSTCHANNEL}" text="{worklistView>CUSTCHANNEL}"/>
+                        </Select> -->
+                       
+                        	<Image src="{worklistView>/microphone}" id="speakingImageID" tooltip="Speak" height="1.6rem" press="OnPressMicrophone" class="sapUiTinyMarginTop"></Image>
+                    </HBox>
+                </HBox>
+                <core:Fragment id="fgFooterFLTileBottom" class="footer" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.FLTileBottom" type="XML"/>
+            </content>
+        </Page>
+</mvc:View>

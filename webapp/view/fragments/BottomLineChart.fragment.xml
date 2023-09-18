@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smc="sap.suite.ui.microchart"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+
+    <Table busy="{localModel>/bExplineBusy}" width="15%" showNoData="false" showSeparators="None" class="lineTable lineLabelChart" items="{path:'localModel>/lineItems',templateShareable:true}">
+        <columns>
+			<Column width="6rem" hAlign="Center"> <Text text=" " class="tileSubTitle"/> </Column>
+		</columns>
+		<items>
+			<ColumnListItem press="onMachineItemClick" type="Active">
+				<cells>
+                    <HBox>
+                        <core:Icon class="sapUiTinyMarginEnd" visible = "{= ${localModel>/isExplinePresent}  ? false : true }" size="0.5rem" src="sap-icon://circle-task-2"  color="{path:'localModel>EXPLINE',formatter: '.formatter.legendColour'}"> </core:Icon>
+                         <core:Icon  visible = "{= ${localModel>/isExplinePresent}  ? true : false }" class="sapUiTinyMarginEnd" size="0.5rem" src="sap-icon://circle-task-2"  color="{path:'localModel>RESDESCR',formatter: '.formatter.legendColorMachine'}"> </core:Icon>
+                        <Text width="5rem" visible = "{= ${localModel>/isExplinePresent}  ? false : true }" text="{localModel>EXPLINE}" class="tileSubTitle"></Text>
+                        <Text width="5rem" visible = "{= ${localModel>/isExplinePresent}  ? true : false }" text="{localModel>RESDESCR}" class="tileSubTitle">
+                         <customData>
+                                <core:CustomData key="colour" value="{= ${localModel>/machineClicked} === ${localModel>RESDESCR} ? 'listSelectItem':''}" writeToDom="true" />
+                        </customData>
+                        </Text>  
+                    </HBox>
+                </cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+		<HBox justifyContent="SpaceAround" visible = "{localModel>/isSecondLayer}">
+            <VBox >
+                <Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Utilization' :'Line Utilization'  }" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bFirstVizFrame}"  class="vizframLine" height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"  xmlns="sap.viz" id="SL1vizFrameid" selectData="handlePopoverPress" />
+            </VBox>
+            <VBox >
+                <Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Availability' :'Line Availability'  }" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bSecondVizFrame}"  class="vizframLine sapUiSmallMarginBottom"  height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"   xmlns="sap.viz" id="SLvizFrameid" selectData="handlePopoverPress" />
+            </VBox>
+            <VBox >
+                <Text text="{= ${localModel>/isExplinePresent}  ? 'Quality Rate' :'Quality Rate'  }" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bThirdVizFrame}"  class="vizframLine sapUiSmallMarginBottom"  height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"  xmlns="sap.viz" id="SL2vizFrameid" selectData="handlePopoverPress" />
+            </VBox>
+        </HBox>
+
+        <HBox  justifyContent="SpaceAround"  width="100%" visible = "{= !${localModel>/isSecondLayer}}">
+            <VBox >
+                <Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Utilization' :'Line Utilization'  }" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bFirstVizFrame}"  class="vizframLine sapUiSmallMarginBottom" height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"  xmlns="sap.viz" id="TL1vizFrameid" selectData="handlePopoverPress"/>
+            </VBox>
+            <VBox   >
+                <Text text="{= ${localModel>/isExplinePresent}  ? 'Machine Availability' :'Line Availability'  }" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame  busy="{localModel>/bSecondVizFrame}"  class="vizframLine sapUiSmallMarginBottom" height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"  xmlns="sap.viz" id="TLvizFrameid" selectData="handlePopoverPress"/>
+            </VBox>
+            <VBox  >
+                <Text text="{= ${localModel>/isExplinePresent}  ? 'Quality Rate' :'Quality Rate'  }" class="chartHeaderTitle tileSubContentHeading"></Text>
+                <viz:VizFrame busy="{localModel>/bThirdVizFrame}"  class="vizframLine sapUiSmallMarginBottom" height="10rem" width = "{= ${device>/system/tablet}  ? '200px' : '16rem' }"  xmlns="sap.viz" id="TL2vizFrameid" selectData="handlePopoverPress"/>
+            </VBox>
+        </HBox>
+    
+</core:FragmentDefinition>

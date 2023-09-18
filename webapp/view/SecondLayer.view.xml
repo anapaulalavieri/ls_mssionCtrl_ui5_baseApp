@@ -1,0 +1,42 @@
+<mvc:View controllerName="scm.ctc.dashboard.scmctcdashboard.controller.SecondLayer"  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:smc="sap.suite.ui.microchart">
+	<Page showHeader="false">
+        <content>
+            <html:iframe id="_idIFrameSecondLayer" class="style3DMdl" ></html:iframe>
+               
+                <FlexBox direction="Row" justifyContent="SpaceBetween" renderType="Div" class="sapUiMediumMarginBeginEnd sapUiTinyMarginTop">
+                    <VBox  alignItems="End">
+                    <core:Fragment id="_IDSLOperationalTile" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.OperationalTile" type="XML"/>
+                    </VBox>
+                    <VBox alignItems="End" justifyContent="Start" width="11rem">
+                        <core:Fragment id="_IDSLOHSTile" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.OHSTile" type="XML"/>
+                    </VBox>
+                </FlexBox>
+                 <HBox width="100%" justifyContent="Center" class="testKPI">
+                
+                    <!-- <Image src="{oGlobalModel>/accentureImg}"  height="1.75rem"></Image> -->
+                    <HBox class="testBread" items="{localModel>/navContent}" justifyContent="Start" alignItems="Center">
+                        <HBox>
+                        
+                            <Link class="breadcrumbLink breadCrumbsFontSize" visible="{= ${localModel>navUrl} !== ''}" press="onBreadcrumbLinkPress" text="{localModel>navName}"/>
+                             <Text text="/" class="sapUiTinyMarginBeginEnd breadCrumbsFontSize breadcrumbSlash" visible="{= ${localModel>navUrl} !== ''}"/>
+                            <Text visible="{= ${localModel>navUrl} === ''}" text="{localModel>navName}" class="breadCrumbsFontSize"/>
+                        </HBox>
+                    </HBox>
+                   
+                    <SegmentedButton width="33.3%" selectedKey="{localModel>/filterSelected}" class="segmentClass sapUiTinyMarginBegin">
+                        <items>
+                            <SegmentedButtonItem width="auto"  press="onFilterPress"  text="DTD" key="DTD" />
+                            <SegmentedButtonItem  width="auto"  press="onFilterPress"  text="3DAY" key="3DAY" />
+                            <SegmentedButtonItem width="auto"  press="onFilterPress"  text="WTD" key="WTD" />
+                            <SegmentedButtonItem width="auto"  press="onFilterPress"  text="MTD" key="MTD" />
+                            <SegmentedButtonItem width="auto"  press="onFilterPress"  text="YTD" key="YTD" />
+                        </items>
+			        </SegmentedButton>
+                </HBox>
+                <core:Fragment id="_IDSLLineEffectiveTile" class="footer" fragmentName="scm.ctc.dashboard.scmctcdashboard.view.fragments.BottomTileEffective" type="XML"/>
+        </content>
+	</Page>
+</mvc:View>
